@@ -3,11 +3,11 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { allItems, company } from "@/data/catalog";
 
-type ContactSearch = { item?: string };
+type ContactSearch = { item?: string | undefined };
 
 export const Route = createFileRoute("/contact")({
   validateSearch: (search: Record<string, unknown>): ContactSearch => ({
-    item: typeof search.item === "string" ? search.item : undefined,
+    item: typeof search["item"] === "string" ? search["item"] : undefined,
   }),
   head: () => ({
     meta: [
