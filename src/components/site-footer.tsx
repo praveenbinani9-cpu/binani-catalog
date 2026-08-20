@@ -25,6 +25,20 @@ export function SiteFooter() {
             <p>Surat, Gujarat, India</p>
             <p>Business Type: Manufacturer &amp; Supplier</p>
             <p>Markets: All Over India</p>
+
+            {/* Added phone and email */}
+            <p>
+              Phone:{" "}
+              <a href="tel:+918460360600" className="text-primary hover:underline" aria-label="Call Binani Enterprises">
+                +91 8460360600
+              </a>
+            </p>
+            <p>
+              Email:{" "}
+              <a href="mailto:email-pravin@binanienterprises.in" className="text-primary hover:underline" aria-label="Email Binani Enterprises">
+                email-pravin@binanienterprises.in
+              </a>
+            </p>
           </address>
         </div>
       </div>
