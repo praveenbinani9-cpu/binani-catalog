@@ -36,7 +36,7 @@ export function SiteFooter() {
             <p>
               Email:{" "}
               <a href="mailto:email-pravin@binanienterprises.in" className="text-primary hover:underline" aria-label="Email Binani Enterprises">
-                email-pravin@binanienterprises.in
+                pravin@binanienterprises.in
               </a>
             </p>
           </address>
