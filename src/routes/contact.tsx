@@ -39,6 +39,7 @@ function ContactPage() {
           We are happy to fulfil your requirement. Let us know what your sourcing needs are and our
           team will respond with pricing and availability.
         </p>
+
         <dl className="mt-8 grid gap-px overflow-hidden rounded-xl border border-border bg-border">
           {company.business.slice(-4).map((b) => (
             <div key={b.label} className="bg-card p-4">
@@ -47,6 +48,36 @@ function ContactPage() {
             </div>
           ))}
         </dl>
+
+        {/* Contact card with phone & email */}
+        <div className="mt-6 rounded-lg border border-border bg-card p-4 shadow-card">
+          <h2 className="font-semibold">Contact</h2>
+          <p className="mt-2 text-sm opacity-90">
+            For enquiries, call or email us:
+          </p>
+          <div className="mt-3 space-y-1 text-sm">
+            <div>
+              <span className="font-medium">Phone:</span>{" "}
+              <a
+                href="tel:+918460360600"
+                className="text-primary hover:underline"
+                aria-label="Call Binani Enterprises"
+              >
+                +91 8460360600
+              </a>
+            </div>
+            <div>
+              <span className="font-medium">Email:</span>{" "}
+              <a
+                href="mailto:email-pravin@binanienterprises.in"
+                className="text-primary hover:underline"
+                aria-label="Email Binani Enterprises"
+              >
+                email-pravin@binanienterprises.in
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <form
