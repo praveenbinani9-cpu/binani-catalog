@@ -22,7 +22,7 @@ export function SiteHeader() {
           {/* Try to load the Binani logo from public/assets; fall back to initials if missing */}
           {!imgError ? (
             <img
-              src="/assets/binani-logo.svg"
+              src="/assets/binani-logo.png"
               alt="Binani Enterprises"
               onError={() => setImgError(true)}
               className="h-10 w-auto rounded-sm"
