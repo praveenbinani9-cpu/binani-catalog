@@ -18,9 +18,12 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border bg-card/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-3">
         <Link to="/" className="flex items-center gap-3">
-          <span className="flex size-10 items-center justify-center rounded-lg bg-hero-gradient font-serif text-lg font-semibold text-primary-foreground">
-            BE
-          </span>
+          {/* Replace the BE badge with the official Binani logo (served from public/assets) */}
+          <img
+            src="/assets/binani-logo.svg"
+            alt="Binani Enterprises"
+            className="h-10 w-auto rounded-sm"
+          />
           <span className="leading-tight">
             <span className="block font-serif text-base font-semibold text-foreground">
               {company.name}
@@ -28,6 +31,17 @@ export function SiteHeader() {
             <span className="block text-xs text-muted-foreground">Surat, Gujarat · GST Verified</span>
           </span>
         </Link>
+
+        {/* External link to the corporate site using the Binani logo (replaces any Lovable badge/link) */}
+        <a
+          href="https://www.binanienterprises.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Binani Enterprises website"
+          className="ml-3 hidden items-center md:flex"
+        >
+          <img src="/assets/binani-logo.svg" alt="Binani Enterprises" className="h-6 w-auto" />
+        </a>
 
         <nav className="ml-auto hidden items-center gap-1 md:flex">
           {nav.map((n) => (
