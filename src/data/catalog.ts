@@ -172,7 +172,7 @@ export const services: Item[] = [
   {
     slug: "digital-payment-acceptance",
     name: "Digital Payment Acceptance",
-    price: "₹150 - 250 / Metric Ton",
+    price: "₹5000 / PG",
     image: img("digital-payment-acceptance-u-1357768730603704456.png"),
     category: "Payment Services",
     description:
