@@ -1,3 +1,19 @@
+import imgKidsKurta from "@/assets/kids-kurta.jpg";
+import imgMensKurta from "@/assets/mens-kurta.jpg";
+import imgNehruJacket from "@/assets/nehru-jacket.jpg";
+import imgEmbroiderySuit from "@/assets/embroidery-suit.jpg";
+import imgOccWastePaper from "@/assets/occ-waste-paper.jpg";
+import imgKraftLiner from "@/assets/kraft-liner.jpg";
+import imgDsoccWastePaper from "@/assets/dsocc-waste-paper.jpg";
+import imgSvcGateway from "@/assets/svc-gateway.jpg";
+import imgSvcCollection from "@/assets/svc-collection.jpg";
+import imgSvcB2b from "@/assets/svc-b2b.jpg";
+import imgSvcLinks from "@/assets/svc-links.jpg";
+import imgSvcSecure from "@/assets/svc-secure.jpg";
+import imgSvcTransactions from "@/assets/svc-transactions.jpg";
+import imgSvcReporting from "@/assets/svc-reporting.jpg";
+import imgSvcSupport from "@/assets/svc-support.jpg";
+
 export type Item = {
   slug: string;
   name: string;
@@ -25,14 +41,12 @@ export const company = {
   ],
 };
 
-const img = (f: string) => `https://www.dial4trade.com/uploaded_files/product_images/${f}`;
-
 export const products: Item[] = [
   {
     slug: "kids-kurta-pajama",
     name: "Kids Kurta Pajama",
     price: "₹500 - 2500 / Piece",
-    image: img("kids-kurta-pjama-u-1357767230603700936.jpg"),
+    image: imgKidsKurta,
     category: "Apparel",
     description:
       "High quality Kids Kurta Pajama from a dependable supplier. Owing to our flawless transit system, we deliver orders within the promised time frame, in a wide choice of fabrics, colours and sizes.",
@@ -46,7 +60,7 @@ export const products: Item[] = [
     slug: "mens-kurta-pajama",
     name: "Men's Kurta Pajama",
     price: "₹500 - 2500 / Piece",
-    image: img("mens-kurta-pjama-u-1357767330603700914.jpg"),
+    image: imgMensKurta,
     category: "Apparel",
     description:
       "A comprehensive range of Men's Kurta Pajama produced with the assistance of our dedicated workforce. Buyers can stay rest assured for on-time delivery and consistent finishing.",
@@ -60,7 +74,7 @@ export const products: Item[] = [
     slug: "jacquard-nehru-jacket",
     name: "Jacquard Nehru Jacket",
     price: "₹500 - 2500 / Piece",
-    image: img("jacquard-nehru-jacket-u-1357767430603700848.jpg"),
+    image: imgNehruJacket,
     category: "Apparel",
     description:
       "Jacquard Nehru Jackets crafted in rich woven patterns for festive and wedding wear. Available in a broad palette with custom sizing on bulk orders.",
@@ -74,7 +88,7 @@ export const products: Item[] = [
     slug: "embroidery-suit-design",
     name: "Embroidery Suit Design",
     price: "₹100 - 600 / Piece",
-    image: img("embroyidery-suit-designs-u-1357767530603700827.jpg"),
+    image: imgEmbroiderySuit,
     category: "Apparel",
     description:
       "Finest Embroidery Suit Designs that customers trust us for. Backed by a sophisticated transit system, buyers receive their consignments without delay.",
@@ -88,7 +102,7 @@ export const products: Item[] = [
     slug: "occ-waste-paper",
     name: "OCC Waste Paper",
     price: "$160 - 250 / Metric Ton",
-    image: img("waste-paper-u-1357767630603701328.jpg"),
+    image: imgOccWastePaper,
     category: "Paper & Scrap",
     description:
       "Fine quality OCC Waste Paper at nominal prices. Buyers are free to place bulk as well as urgent orders and we ensure timely delivery of every lot.",
@@ -102,7 +116,7 @@ export const products: Item[] = [
     slug: "kraft-liner-board",
     name: "Kraft Liner Board",
     price: "$600 - 700 / Metric Ton",
-    image: img("kraft-liner-u-1357767730603700757.jpg"),
+    image: imgKraftLiner,
     category: "Paper & Scrap",
     description:
       "Reckoned as a noted supplier of Kraft Liner, we meet the exact requirements of buyers and deliver orders on schedule for complete satisfaction.",
@@ -116,7 +130,7 @@ export const products: Item[] = [
     slug: "occ-dsocc-waste-paper",
     name: "OCC / DSOCC Waste Paper",
     price: "$150 - 250 / Metric Ton",
-    image: img("dsocc-waste-paper-u-1357772630603703621.jpg"),
+    image: imgDsoccWastePaper,
     category: "Paper & Scrap",
     description:
       "DSOCC Waste Paper is a recyclable paper material suitable for recycling and paper manufacturing. It is collected, sorted and processed to maintain consistent quality and usability.",
@@ -133,7 +147,7 @@ export const services: Item[] = [
     slug: "payment-gateway-integration",
     name: "Payment Gateway Integration",
     price: "₹5000 / PG",
-    image: img("payment-gateway-integration-u-1357768330603704601.png"),
+    image: imgSvcGateway,
     category: "Payment Services",
     description:
       "End-to-end payment gateway integration for websites and apps, with sandbox testing, go-live support and documentation.",
@@ -143,7 +157,7 @@ export const services: Item[] = [
     slug: "online-payment-collection",
     name: "Online Payment Collection",
     price: "₹5000 / PG",
-    image: img("online-payment-collection-u-1357768430603704541.png"),
+    image: imgSvcCollection,
     category: "Payment Services",
     description:
       "Collect customer payments online through cards, UPI, netbanking and wallets with automated reconciliation.",
@@ -153,7 +167,7 @@ export const services: Item[] = [
     slug: "b2b-payment-solutions",
     name: "B2B Payment Solutions",
     price: "₹5000 / PG",
-    image: img("b2b-payment-solutions-u-1357768530603704527.png"),
+    image: imgSvcB2b,
     category: "Payment Services",
     description:
       "Payment workflows built for business buyers: invoice collection, bulk payouts and credit period handling.",
@@ -163,7 +177,7 @@ export const services: Item[] = [
     slug: "payment-links",
     name: "Payment Links",
     price: "₹5000 / PG",
-    image: img("payment-links-u-1357768630603704511.png"),
+    image: imgSvcLinks,
     category: "Payment Services",
     description:
       "Share ready-to-pay links over WhatsApp, SMS or email and get paid without a website or checkout build.",
@@ -173,7 +187,7 @@ export const services: Item[] = [
     slug: "digital-payment-acceptance",
     name: "Digital Payment Acceptance",
     price: "₹5000 / PG",
-    image: img("digital-payment-acceptance-u-1357768730603704456.png"),
+    image: imgSvcCollection,
     category: "Payment Services",
     description:
       "Enable digital payment acceptance across counters and online channels with unified settlement.",
@@ -183,7 +197,7 @@ export const services: Item[] = [
     slug: "transaction-management",
     name: "Transaction Management",
     price: "₹5000 / PG",
-    image: img("transaction-management-u-1357768930603704425.png"),
+    image: imgSvcTransactions,
     category: "Payment Services",
     description:
       "Track, reconcile and manage every transaction from a single dashboard with refund and dispute handling.",
@@ -193,7 +207,7 @@ export const services: Item[] = [
     slug: "secure-payments",
     name: "Secure Payments",
     price: "₹5000 / PG",
-    image: img("secure-payments-u-1357767830603704806.png"),
+    image: imgSvcSecure,
     category: "Payment Services",
     description:
       "PCI-conscious, encrypted payment flows with fraud checks to keep customer money and data protected.",
@@ -203,7 +217,7 @@ export const services: Item[] = [
     slug: "real-time-reporting",
     name: "Real Time Reporting",
     price: "₹5000 / PG",
-    image: img("real-time-reporting-u-1357768130603704635.webp"),
+    image: imgSvcReporting,
     category: "Payment Services",
     description:
       "Live visibility into collections, settlements and failures so finance teams always know where money stands.",
@@ -213,7 +227,7 @@ export const services: Item[] = [
     slug: "reliable-support",
     name: "Reliable Support",
     price: "₹5000 / PG",
-    image: img("reliable-support-u-1357768230603704619.png"),
+    image: imgSvcSupport,
     category: "Payment Services",
     description:
       "Responsive assistance for setup, settlement queries and escalations from a team that knows your account.",
@@ -223,7 +237,7 @@ export const services: Item[] = [
     slug: "payment-reporting",
     name: "Payment Reporting",
     price: "₹5000 / PG",
-    image: img("payment-reporting-u-1357769030603704408.webp"),
+    image: imgSvcReporting,
     category: "Payment Services",
     description:
       "Structured payment reports for accounting, GST filing and internal audits, delivered on your schedule.",
