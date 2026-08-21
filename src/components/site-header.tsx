@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu } from "lucide-react";
 import { useState } from "react";
 import { company } from "@/data/catalog";
+import logo from "@/assets/binani-logo.png";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -13,25 +14,18 @@ const nav = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const [imgError, setImgError] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-card/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-3">
         <Link to="/" className="flex items-center gap-3">
-          {/* Try to load the Binani logo from public/assets; fall back to initials if missing */}
-          {!imgError ? (
-            <img
-              src="/assets/binani-logo.png"
-              alt="Binani Enterprises"
-              onError={() => setImgError(true)}
-              className="h-10 w-auto rounded-sm"
-            />
-          ) : (
-            <span className="flex size-10 items-center justify-center rounded-lg bg-hero-gradient font-serif text-lg font-semibold text-primary-foreground">
-              BE
-            </span>
-          )}
+          <img
+            src={logo}
+            alt="Binani Enterprises logo"
+            width={816}
+            height={816}
+            className="h-10 w-auto"
+          />
 
           <span className="leading-tight">
             <span className="block font-serif text-base font-semibold text-foreground">
@@ -40,21 +34,6 @@ export function SiteHeader() {
             <span className="block text-xs text-muted-foreground">Surat, Gujarat · GST Verified</span>
           </span>
         </Link>
-
-        {/* External link to the corporate site using the Binani logo (replaces any Lovable badge/link) */}
-        <a
-          href="https://www.binanienterprises.in/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Binani Enterprises website"
-          className="ml-3 hidden items-center md:flex"
-        >
-          {!imgError ? (
-            <img src="/assets/binani-logo.svg" alt="Binani Enterprises" onError={() => setImgError(true)} className="h-6 w-auto" />
-          ) : (
-            <span className="text-sm font-medium text-foreground">Binani Enterprises</span>
-          )}
-        </a>
 
         <nav className="ml-auto hidden items-center gap-1 md:flex">
           {nav.map((n) => (
