@@ -4,7 +4,7 @@ import { company } from "@/data/catalog";
 export function SiteFooter() {
   return (
     <footer className="mt-20 bg-brand-deep text-primary-foreground">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-4">
         <div>
           <h2 className="font-serif text-xl font-semibold">{company.name}</h2>
           <p className="mt-3 text-sm opacity-80">{company.tagline}</p>
@@ -20,13 +20,21 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
+          <h3 className="text-sm font-semibold uppercase tracking-wide opacity-70">Policies</h3>
+          <ul className="mt-3 space-y-2 text-sm">
+            <li><Link to="/terms" className="opacity-85 hover:opacity-100">Terms &amp; Conditions</Link></li>
+            <li><Link to="/privacy" className="opacity-85 hover:opacity-100">Privacy Policy</Link></li>
+            <li><Link to="/refund" className="opacity-85 hover:opacity-100">Refund &amp; Cancellation</Link></li>
+            <li><Link to="/shipping" className="opacity-85 hover:opacity-100">Shipping &amp; Delivery</Link></li>
+            <li><Link to="/disclaimer" className="opacity-85 hover:opacity-100">Disclaimer</Link></li>
+          </ul>
+        </div>
+        <div>
           <h3 className="text-sm font-semibold uppercase tracking-wide opacity-70">Reach Us</h3>
           <address className="mt-3 space-y-2 text-sm not-italic opacity-85">
             <p>Surat, Gujarat, India</p>
             <p>Business Type: Manufacturer &amp; Supplier</p>
             <p>Markets: All Over India</p>
-
-            {/* Added phone and email */}
             <p>
               Phone:{" "}
               <a href="tel:+918460360600" className="text-primary hover:underline" aria-label="Call Binani Enterprises">
@@ -35,7 +43,7 @@ export function SiteFooter() {
             </p>
             <p>
               Email:{" "}
-              <a href="mailto:email-pravin@binanienterprises.in" className="text-primary hover:underline" aria-label="Email Binani Enterprises">
+              <a href="mailto:pravin@binanienterprises.in" className="text-primary hover:underline" aria-label="Email Binani Enterprises">
                 pravin@binanienterprises.in
               </a>
             </p>
@@ -45,6 +53,7 @@ export function SiteFooter() {
       <div className="border-t border-primary-foreground/15 py-5 text-center text-xs opacity-70">
         © {new Date().getFullYear()} {company.name}. All rights reserved.
       </div>
+
     </footer>
   );
 }
