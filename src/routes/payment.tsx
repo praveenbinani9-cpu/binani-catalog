@@ -19,14 +19,27 @@ function PaymentPage() {
     const container = containerRef.current;
     if (!container) return;
 
-    // Create a form and inject the PayGlocal script inside it
+    // Create a form and inject a visible "PAY NOW WITH USD" button and the PayGlocal script
     const form = document.createElement("form");
+    form.className = "flex items-center gap-4";
+
+    const button = document.createElement("button");
+    button.type = "submit";
+    // Tailwind classes used elsewhere in the site for visual consistency
+    button.className = "rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90";
+    button.textContent = "PAY NOW WITH USD";
+
+    form.appendChild(button);
+
     const script = document.createElement("script");
     script.src = "https://oneclick.payglocal.in/simple.js";
     script.async = true;
-    // Update this PB id to your merchant PB id if needed
-    script.setAttribute("data-pb-id", "pb_63lFq53Wd9Rh");
+    // Updated PB id as requested
+    script.setAttribute("data-pb-id", "pb_xiCUFvHSnEXJ");
+
+    // Append the script after the button so the button is visible even if the script fails to load
     form.appendChild(script);
+
     container.appendChild(form);
 
     return () => {
@@ -43,7 +56,7 @@ function PaymentPage() {
       </p>
 
       <div className="mt-8 rounded-xl border border-border bg-card p-6">
-        {/* Payment widget is injected into this container on the client */}
+        {/* Payment widget and visible button are injected into this container on the client */}
         <div ref={containerRef} />
       </div>
 
