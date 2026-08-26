@@ -101,7 +101,6 @@ export const products: Item[] = [
   {
     slug: "occ-waste-paper",
     name: "OCC Waste Paper",
-    price: "$160 - 250 / Metric Ton",
     image: imgOccWastePaper,
     category: "Paper & Scrap",
     description:
