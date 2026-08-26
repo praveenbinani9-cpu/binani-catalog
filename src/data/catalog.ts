@@ -115,7 +115,6 @@ export const products: Item[] = [
   {
     slug: "kraft-liner-board",
     name: "Kraft Liner Board",
-    price: "$600 - 700 / Metric Ton",
     image: imgKraftLiner,
     category: "Paper & Scrap",
     description:
