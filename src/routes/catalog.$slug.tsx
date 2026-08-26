@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 import { allItems, products, services } from "@/data/catalog";
 
 export const Route = createFileRoute("/catalog/$slug")({
@@ -56,6 +57,30 @@ function ItemDetail() {
     .filter((i) => i.slug !== item.slug)
     .slice(0, 3);
 
+  const paymentRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!isService) return;
+    const container = paymentRef.current;
+    if (!container) return;
+
+    // Create form and script as provided by PayGlocal. Appending the script element
+    // dynamically ensures the external script is executed by the browser.
+    const form = document.createElement("form");
+    const script = document.createElement("script");
+    script.src = "https://oneclick.payglocal.in/simple.js";
+    script.setAttribute("data-pb-id", "pb_63lFq53Wd9Rh");
+    // Allow script to load asynchronously
+    script.async = true;
+    form.appendChild(script);
+    container.appendChild(form);
+
+    return () => {
+      // cleanup
+      if (container.contains(form)) container.removeChild(form);
+    };
+  }, [isService]);
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
       <nav className="text-sm text-muted-foreground">
@@ -101,6 +126,13 @@ function ItemDetail() {
           >
             Send Inquiry
           </Link>
+
+          {isService && (
+            <div className="mt-6">
+              <h3 className="text-lg font-medium">Pay Online</h3>
+              <div ref={paymentRef} className="mt-3" />
+            </div>
+          )}
         </div>
       </div>
 
