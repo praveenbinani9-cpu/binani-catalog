@@ -1,0 +1,15 @@
+CREATE TYPE public.app_role AS ENUM ('admin','user');
+CREATE TABLE public.user_roles (id uuid PRIMARY KEY DEFAULT gen_random_uuid(), user_id uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE, role public.app_role NOT NULL, UNIQUE(user_id,role));
+GRANT SELECT ON public.user_roles TO authenticated;
+GRANT ALL ON public.user_roles TO service_role;
+ALTER TABLE public.user_roles ENABLE ROW LEVEL SECURITY;
+CREATE FUNCTION public.has_role(_user_id uuid,_role public.app_role) RETURNS boolean LANGUAGE sql STABLE SECURITY DEFINER SET search_path=public AS $$ SELECT EXISTS(SELECT 1 FROM public.user_roles WHERE user_id=_user_id AND role=_role) $$;
+CREATE POLICY own_roles ON public.user_roles FOR SELECT TO authenticated USING(user_id=auth.uid());
+CREATE TABLE public.inquiries (id uuid PRIMARY KEY DEFAULT gen_random_uuid(), created_at timestamptz NOT NULL DEFAULT now(), company_name text NOT NULL CHECK(length(company_name) BETWEEN 1 AND 150), contact_person text NOT NULL CHECK(length(contact_person) BETWEEN 1 AND 100), phone text NOT NULL CHECK(length(phone) BETWEEN 7 AND 25), email text NOT NULL CHECK(length(email)<256), customer_type text NOT NULL CHECK(customer_type IN ('Exporter','Corporate','Domestic business')), requirements jsonb NOT NULL, notes text NOT NULL DEFAULT '' CHECK(length(notes)<=5000), files jsonb NOT NULL DEFAULT '[]', consent boolean NOT NULL CHECK(consent=true), status text NOT NULL DEFAULT 'New' CHECK(status IN ('New','Contacted','Quoted','Closed')));
+GRANT SELECT,UPDATE ON public.inquiries TO authenticated;
+GRANT ALL ON public.inquiries TO service_role;
+ALTER TABLE public.inquiries ENABLE ROW LEVEL SECURITY;
+CREATE POLICY admin_read ON public.inquiries FOR SELECT TO authenticated USING(public.has_role(auth.uid(),'admin'));
+CREATE POLICY admin_update ON public.inquiries FOR UPDATE TO authenticated USING(public.has_role(auth.uid(),'admin')) WITH CHECK(public.has_role(auth.uid(),'admin'));
+CREATE POLICY admin_files ON storage.objects FOR SELECT TO authenticated USING(bucket_id='tech-packs' AND public.has_role(auth.uid(),'admin'));
+CREATE INDEX inquiries_created_idx ON public.inquiries(created_at DESC);
