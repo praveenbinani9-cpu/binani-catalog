@@ -17,7 +17,7 @@ import imgSvcSupport from "@/assets/svc-support.jpg";
 export type Item = {
   slug: string;
   name: string;
-  price: string;
+  price?: string;
   image: string;
   category: "Apparel" | "Paper & Scrap" | "Payment Services";
   description: string;
