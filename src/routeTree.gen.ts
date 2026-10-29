@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
+import { Route as PaymentRouteImport } from './routes/payment'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as RefundRouteImport } from './routes/refund'
@@ -39,6 +40,11 @@ const ContactRoute = ContactRouteImport.update({
 const DisclaimerRoute = DisclaimerRouteImport.update({
   id: '/disclaimer',
   path: '/disclaimer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentRoute = PaymentRouteImport.update({
+  id: '/payment',
+  path: '/payment',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/payment': typeof PaymentRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
   '/refund': typeof RefundRoute
@@ -95,6 +102,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/payment': typeof PaymentRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
   '/refund': typeof RefundRoute
@@ -109,6 +117,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/payment': typeof PaymentRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
   '/refund': typeof RefundRoute
@@ -124,6 +133,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/disclaimer'
+    | '/payment'
     | '/privacy'
     | '/products'
     | '/refund'
@@ -137,6 +147,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/disclaimer'
+    | '/payment'
     | '/privacy'
     | '/products'
     | '/refund'
@@ -150,6 +161,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/disclaimer'
+    | '/payment'
     | '/privacy'
     | '/products'
     | '/refund'
@@ -164,6 +176,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   DisclaimerRoute: typeof DisclaimerRoute
+  PaymentRoute: typeof PaymentRoute
   PrivacyRoute: typeof PrivacyRoute
   ProductsRoute: typeof ProductsRoute
   RefundRoute: typeof RefundRoute
@@ -201,6 +214,13 @@ declare module '@tanstack/react-router' {
       path: '/disclaimer'
       fullPath: '/disclaimer'
       preLoaderRoute: typeof DisclaimerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payment': {
+      id: '/payment'
+      path: '/payment'
+      fullPath: '/payment'
+      preLoaderRoute: typeof PaymentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -260,6 +280,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   DisclaimerRoute: DisclaimerRoute,
+  PaymentRoute: PaymentRoute,
   PrivacyRoute: PrivacyRoute,
   ProductsRoute: ProductsRoute,
   RefundRoute: RefundRoute,
