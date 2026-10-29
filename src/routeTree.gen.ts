@@ -12,7 +12,12 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DigitalPrintingRouteImport } from './routes/digital-printing'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
+import { Route as FabricsRouteImport } from './routes/fabrics'
+import { Route as IndustriesRouteImport } from './routes/industries'
+import { Route as MakeToOrderRouteImport } from './routes/make-to-order'
+import { Route as PaymentRouteImport } from './routes/payment'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as RefundRouteImport } from './routes/refund'
@@ -36,9 +41,34 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DigitalPrintingRoute = DigitalPrintingRouteImport.update({
+  id: '/digital-printing',
+  path: '/digital-printing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DisclaimerRoute = DisclaimerRouteImport.update({
   id: '/disclaimer',
   path: '/disclaimer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FabricsRoute = FabricsRouteImport.update({
+  id: '/fabrics',
+  path: '/fabrics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesRoute = IndustriesRouteImport.update({
+  id: '/industries',
+  path: '/industries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MakeToOrderRoute = MakeToOrderRouteImport.update({
+  id: '/make-to-order',
+  path: '/make-to-order',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentRoute = PaymentRouteImport.update({
+  id: '/payment',
+  path: '/payment',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -81,7 +111,12 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/digital-printing': typeof DigitalPrintingRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/fabrics': typeof FabricsRoute
+  '/industries': typeof IndustriesRoute
+  '/make-to-order': typeof MakeToOrderRoute
+  '/payment': typeof PaymentRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
   '/refund': typeof RefundRoute
@@ -94,7 +129,12 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/digital-printing': typeof DigitalPrintingRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/fabrics': typeof FabricsRoute
+  '/industries': typeof IndustriesRoute
+  '/make-to-order': typeof MakeToOrderRoute
+  '/payment': typeof PaymentRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
   '/refund': typeof RefundRoute
@@ -108,7 +148,12 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/digital-printing': typeof DigitalPrintingRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/fabrics': typeof FabricsRoute
+  '/industries': typeof IndustriesRoute
+  '/make-to-order': typeof MakeToOrderRoute
+  '/payment': typeof PaymentRoute
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRoute
   '/refund': typeof RefundRoute
@@ -123,7 +168,12 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/digital-printing'
     | '/disclaimer'
+    | '/fabrics'
+    | '/industries'
+    | '/make-to-order'
+    | '/payment'
     | '/privacy'
     | '/products'
     | '/refund'
@@ -136,7 +186,12 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/digital-printing'
     | '/disclaimer'
+    | '/fabrics'
+    | '/industries'
+    | '/make-to-order'
+    | '/payment'
     | '/privacy'
     | '/products'
     | '/refund'
@@ -149,7 +204,12 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/digital-printing'
     | '/disclaimer'
+    | '/fabrics'
+    | '/industries'
+    | '/make-to-order'
+    | '/payment'
     | '/privacy'
     | '/products'
     | '/refund'
@@ -163,7 +223,12 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  DigitalPrintingRoute: typeof DigitalPrintingRoute
   DisclaimerRoute: typeof DisclaimerRoute
+  FabricsRoute: typeof FabricsRoute
+  IndustriesRoute: typeof IndustriesRoute
+  MakeToOrderRoute: typeof MakeToOrderRoute
+  PaymentRoute: typeof PaymentRoute
   PrivacyRoute: typeof PrivacyRoute
   ProductsRoute: typeof ProductsRoute
   RefundRoute: typeof RefundRoute
@@ -196,11 +261,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/digital-printing': {
+      id: '/digital-printing'
+      path: '/digital-printing'
+      fullPath: '/digital-printing'
+      preLoaderRoute: typeof DigitalPrintingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/disclaimer': {
       id: '/disclaimer'
       path: '/disclaimer'
       fullPath: '/disclaimer'
       preLoaderRoute: typeof DisclaimerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fabrics': {
+      id: '/fabrics'
+      path: '/fabrics'
+      fullPath: '/fabrics'
+      preLoaderRoute: typeof FabricsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries': {
+      id: '/industries'
+      path: '/industries'
+      fullPath: '/industries'
+      preLoaderRoute: typeof IndustriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/make-to-order': {
+      id: '/make-to-order'
+      path: '/make-to-order'
+      fullPath: '/make-to-order'
+      preLoaderRoute: typeof MakeToOrderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payment': {
+      id: '/payment'
+      path: '/payment'
+      fullPath: '/payment'
+      preLoaderRoute: typeof PaymentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -259,7 +359,12 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  DigitalPrintingRoute: DigitalPrintingRoute,
   DisclaimerRoute: DisclaimerRoute,
+  FabricsRoute: FabricsRoute,
+  IndustriesRoute: IndustriesRoute,
+  MakeToOrderRoute: MakeToOrderRoute,
+  PaymentRoute: PaymentRoute,
   PrivacyRoute: PrivacyRoute,
   ProductsRoute: ProductsRoute,
   RefundRoute: RefundRoute,
