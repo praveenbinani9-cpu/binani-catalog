@@ -1,132 +1,18 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ItemCard } from "@/components/item-card";
-import { company, products, services, faqs } from "@/data/catalog";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Binani Enterprises — Apparel, Waste Paper & Payment Services" },
-      {
-        name: "description",
-        content:
-          "Browse the Binani Enterprises catalog: kurta pajama, Nehru jackets, OCC waste paper, kraft liner and digital payment services from Surat, Gujarat.",
-      },
-      { property: "og:title", content: "Binani Enterprises — Product & Service Catalog" },
-      {
-        property: "og:description",
-        content: "Ethnic apparel, recycled paper grades and payment solutions. Established 2024, Surat.",
-      },
-    ],
-  }),
-  component: Index,
-});
-
-function Index() {
-  return (
-    <>
-      <section className="bg-hero-gradient text-primary-foreground">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-[1.1fr_1fr] md:items-center md:py-24">
-          <div>
-            <span className="inline-block rounded-full bg-primary-foreground/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide">
-              Manufacturer · Supplier · Est. 2024
-            </span>
-            <h1 className="mt-5 font-serif text-4xl font-semibold leading-tight md:text-5xl">
-              {company.name}
-            </h1>
-            <p className="mt-4 max-w-xl text-base opacity-90">{company.tagline}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                to="/products"
-                className="rounded-md bg-primary-foreground px-5 py-3 text-sm font-semibold text-primary hover:opacity-90"
-              >
-                Explore Products
-              </Link>
-              <Link
-                to="/contact"
-                className="rounded-md border border-primary-foreground/40 px-5 py-3 text-sm font-semibold hover:bg-primary-foreground/10"
-              >
-                Request a Quote
-              </Link>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            {products.slice(0, 4).map((p) => (
-              <img
-                key={p.slug}
-                src={p.image}
-                alt={p.name}
-                loading="lazy"
-                className="h-40 w-full rounded-xl object-cover shadow-card"
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="grid gap-10 md:grid-cols-[1.2fr_1fr]">
-          <div>
-            <h2 className="font-serif text-3xl font-semibold">Welcome to {company.name}</h2>
-            <p className="mt-4 text-muted-foreground">{company.intro}</p>
-            <Link
-              to="/about"
-              className="mt-6 inline-block rounded-md border border-border px-4 py-2 text-sm font-medium hover:bg-secondary"
-            >
-              Read More
-            </Link>
-          </div>
-          <dl className="grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2">
-            {company.business.slice(0, 6).map((b) => (
-              <div key={b.label} className="bg-card p-4">
-                <dt className="text-xs uppercase tracking-wide text-muted-foreground">{b.label}</dt>
-                <dd className="mt-1 text-sm font-semibold">{b.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
-
-      <section className="bg-secondary/60 py-16">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <h2 className="font-serif text-3xl font-semibold">Our Product Range</h2>
-            <Link to="/products" className="text-sm font-semibold text-primary hover:underline">
-              View All Products →
-            </Link>
-          </div>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {products.slice(0, 6).map((p) => (
-              <ItemCard key={p.slug} item={p} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="font-serif text-3xl font-semibold">Our Services Range</h2>
-          <Link to="/services" className="text-sm font-semibold text-primary hover:underline">
-            View All Services →
-          </Link>
-        </div>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.slice(0, 6).map((s) => (
-            <ItemCard key={s.slug} item={s} />
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-4xl px-4 pb-4">
-        <h2 className="font-serif text-3xl font-semibold">Frequently Asked Questions</h2>
-        <div className="mt-6 divide-y divide-border overflow-hidden rounded-xl border border-border bg-card">
-          {faqs.map((f) => (
-            <details key={f.q} className="group p-5">
-              <summary className="cursor-pointer list-none font-semibold">{f.q}</summary>
-              <p className="mt-2 text-sm text-muted-foreground">{f.a}</p>
-            </details>
-          ))}
-        </div>
-      </section>
-    </>
-  );
-}
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { ArrowRight, ArrowUpRight, Globe2, Building2, Store, ChevronLeft, ChevronRight, Scissors, Layers, Sparkles } from 'lucide-react';
+import { useRef } from 'react';
+import { Button } from '@/components/ui/button';
+import { pageHead } from '@/lib/seo';
+import { fabrics, categories } from '@/data/fabrics';
+import hero from '@/assets/textile-hero.jpg';
+import { FabricCard } from '@/components/textile/fabric-card';
+import { StatsStrip, SectionHeading, ProcessSteps, FinalCTA, QuoteButton, WhatsAppButton } from '@/components/textile/shared';
+export const Route=createFileRoute('/')({head:()=>({...pageHead('Binani Enterprises — Your Textile Manufacturing Partner','From fabric to finished garment, one partner for exporters, corporates and local businesses. Explore fabrics, digital printing and make-to-order manufacturing in Surat.'),scripts:[{type:'application/ld+json',children:JSON.stringify({'@context':'https://schema.org','@graph':[{'@type':'Organization',name:'Binani Enterprises',description:'Textile fabrics and make-to-order manufacturing in Surat',telephone:'+91 8460360600'},{'@type':'LocalBusiness',name:'Binani Enterprises',address:{'@type':'PostalAddress',addressLocality:'Surat',addressRegion:'Gujarat',addressCountry:'IN'}}]})}]}),component:Home});
+function Home(){const rail=useRef<HTMLDivElement>(null);return <>
+<section className="relative isolate overflow-hidden bg-primary text-hero-ink"><img src={hero} alt="Navy, ivory and gold embroidered fabric draped in flowing folds" width={1920} height={1024} fetchPriority="high" className="absolute inset-0 -z-20 size-full object-cover object-[58%_center]"/><div className="absolute inset-0 -z-10 bg-hero-overlay"/><div className="section-shell py-16 md:py-24"><div className="max-w-2xl fabric-reveal"><p className="eyebrow flex items-center gap-3"><span className="h-px w-8 bg-accent"/>SURAT’S TEXTILE EXPERTISE. YOUR VISION.</p><h1 className="mt-6 font-serif text-5xl font-medium leading-[1.1] md:text-6xl">Binani Enterprises</h1><p className="mt-5 max-w-lg font-serif text-2xl leading-snug md:text-3xl">From fabric to finished garment.<br/><span className="text-accent">One trusted partner.</span></p><p className="mt-5 max-w-md text-sm leading-7 opacity-85">Make-to-order manufacturing, exceptional fabrics and in-house digital printing for exporters, corporates and domestic businesses.</p><div className="mt-8 flex flex-wrap gap-3"><Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90"><Link to="/contact">Request a Quote<ArrowUpRight/></Link></Button><div className="[&_a]:border-hero-ink/35 [&_a]:bg-transparent [&_a]:text-hero-ink"><WhatsAppButton/></div></div><div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 border-t border-hero-ink/20 pt-5 text-[11px] opacity-85"><span className="flex items-center gap-2"><Scissors className="size-4 text-accent"/>Made to your specifications</span><span className="flex items-center gap-2"><Layers className="size-4 text-accent"/>Fabric to finished garment</span><span className="flex items-center gap-2"><Sparkles className="size-4 text-accent"/>In-house printing</span></div></div></div></section>
+<StatsStrip/>
+<section className="section-shell py-16 md:py-20"><div className="flex flex-col justify-between gap-4 md:flex-row md:items-end"><SectionHeading eyebrow="BUILT AROUND YOUR BUSINESS" title="Different needs. One textile partner."/><p className="max-w-sm text-sm text-muted-foreground">From a considered collection to a large-scale requirement, we make your specifications our starting point.</p></div><div className="mt-10 grid gap-6 md:grid-cols-3">{[[Globe2,'Exporters','Production aligned with your buyer’s specifications, approved samples and export requirements.'],[Building2,'Corporates','Uniforms, gifting and branded merchandise that reflect your organisation.'],[Store,'Domestic Businesses','Flexible sourcing and manufacturing for brands, boutiques, wholesalers and retailers.']].map(([Icon,title,text])=>{const I=Icon as typeof Globe2;return <Link key={String(title)} to="/industries" className="group border-t border-border pt-7"><I className="size-6 text-primary"/><h3 className="mt-5 flex items-center justify-between font-serif text-2xl text-primary">{String(title)}<ArrowUpRight className="size-5 transition-transform group-hover:-translate-y-1"/></h3><p className="mt-3 text-sm text-muted-foreground">{String(text)}</p></Link>;})}</div></section>
+<section className="bg-secondary/40 py-16 md:py-20"><div className="section-shell"><div className="flex items-end justify-between gap-4"><SectionHeading eyebrow="THE FABRIC EDIT" title="A world of textures. Ready for your ideas."/><div className="hidden shrink-0 gap-2 sm:flex"><Button variant="outline" size="icon" aria-label="Previous fabrics" onClick={()=>rail.current?.scrollBy({left:-350,behavior:'smooth'})}><ChevronLeft/></Button><Button variant="outline" size="icon" aria-label="Next fabrics" onClick={()=>rail.current?.scrollBy({left:350,behavior:'smooth'})}><ChevronRight/></Button></div></div><div ref={rail} className="mt-10 flex snap-x gap-6 overflow-x-auto pb-5">{[fabrics[0],fabrics[10],fabrics[3],fabrics[25],fabrics[7]].filter(f=>f!==undefined).map(f=><div key={f.id} className="w-[280px] shrink-0 snap-start md:w-[calc((100%-48px)/3)]"><FabricCard fabric={f}/></div>)}</div><Button asChild variant="link" className="mt-3 px-0"><Link to="/fabrics">Explore the Full Fabric Catalog<ArrowRight/></Link></Button></div></section>
+<section className="section-shell py-16 md:py-20"><SectionHeading eyebrow="MAKE-TO-ORDER, MADE SIMPLE" title="Your pattern. Our production." description="Share the cutting pattern and specifications. We bring the right fabric, finishing and manufacturing together."/><ProcessSteps/><div className="mt-8"><Button asChild variant="outline"><Link to="/make-to-order">Discover Make-to-Order<ArrowUpRight/></Link></Button></div></section>
+<section className="border-y border-border bg-card py-16"><div className="section-shell grid gap-10 md:grid-cols-2"><img src={hero} alt="Representative gold embroidered textile with fine floral detailing" width={1920} height={1024} loading="lazy" className="aspect-[4/3] w-full rounded-md object-cover object-right"/><div className="self-center"><SectionHeading eyebrow="THE DETAILS MAKE THE DIFFERENCE" title="More than fabric. A finishing touch." description="Add depth, character and distinction with treatments selected for your design."/><div className="mt-7 grid grid-cols-2 gap-x-6 gap-y-4">{['Embroidery','Jacquard','Hakoba','Brasso'].map(v=><p key={v} className="border-b border-border pb-3 text-sm"><span className="mr-2 text-accent">↗</span>{v}</p>)}</div><Button asChild variant="link" className="mt-5 px-0"><Link to="/digital-printing">Printing & Value Addition<ArrowRight/></Link></Button></div></div></section>
+<section className="section-shell py-16"><SectionHeading eyebrow="FROM COLLECTIONS TO EVERYDAY ESSENTIALS" title="Made for every category."/><div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-5">{categories.map((c,i)=><Link key={c} to="/contact" search={{item:c}} className="flex items-center justify-between border-b border-border py-5 text-sm font-semibold"><span><span className="mb-3 block text-xs text-muted-foreground">0{i+1}</span>{c}</span><ArrowUpRight className="size-4"/></Link>)}</div></section><FinalCTA/></>}
