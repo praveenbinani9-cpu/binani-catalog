@@ -25,6 +25,7 @@ import { Route as ProductsRouteImport } from './routes/products'
 import { Route as RefundRouteImport } from './routes/refund'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ShippingRouteImport } from './routes/shipping'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as CatalogSlugRouteImport } from './routes/catalog.$slug'
@@ -108,6 +109,11 @@ const ShippingRoute = ShippingRouteImport.update({
   path: '/shipping',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -140,6 +146,7 @@ export interface FileRoutesByFullPath {
   '/refund': typeof RefundRoute
   '/services': typeof ServicesRoute
   '/shipping': typeof ShippingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/catalog/$slug': typeof CatalogSlugRoute
@@ -160,6 +167,7 @@ export interface FileRoutesByTo {
   '/refund': typeof RefundRoute
   '/services': typeof ServicesRoute
   '/shipping': typeof ShippingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/catalog/$slug': typeof CatalogSlugRoute
@@ -182,6 +190,7 @@ export interface FileRoutesById {
   '/refund': typeof RefundRoute
   '/services': typeof ServicesRoute
   '/shipping': typeof ShippingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/catalog/$slug': typeof CatalogSlugRoute
@@ -204,6 +213,7 @@ export interface FileRouteTypes {
     | '/refund'
     | '/services'
     | '/shipping'
+    | '/sitemap.xml'
     | '/terms'
     | '/admin'
     | '/catalog/$slug'
@@ -224,6 +234,7 @@ export interface FileRouteTypes {
     | '/refund'
     | '/services'
     | '/shipping'
+    | '/sitemap.xml'
     | '/terms'
     | '/admin'
     | '/catalog/$slug'
@@ -245,6 +256,7 @@ export interface FileRouteTypes {
     | '/refund'
     | '/services'
     | '/shipping'
+    | '/sitemap.xml'
     | '/terms'
     | '/_authenticated/admin'
     | '/catalog/$slug'
@@ -267,6 +279,7 @@ export interface RootRouteChildren {
   RefundRoute: typeof RefundRoute
   ServicesRoute: typeof ServicesRoute
   ShippingRoute: typeof ShippingRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   CatalogSlugRoute: typeof CatalogSlugRoute
 }
@@ -385,6 +398,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShippingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -437,6 +457,7 @@ const rootRouteChildren: RootRouteChildren = {
   RefundRoute: RefundRoute,
   ServicesRoute: ServicesRoute,
   ShippingRoute: ShippingRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   CatalogSlugRoute: CatalogSlugRoute,
 }
