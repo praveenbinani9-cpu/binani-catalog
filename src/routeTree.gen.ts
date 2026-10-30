@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DigitalPrintingRouteImport } from './routes/digital-printing'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
@@ -23,7 +25,9 @@ import { Route as ProductsRouteImport } from './routes/products'
 import { Route as RefundRouteImport } from './routes/refund'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ShippingRouteImport } from './routes/shipping'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as CatalogSlugRouteImport } from './routes/catalog.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -31,9 +35,18 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -96,10 +109,20 @@ const ShippingRoute = ShippingRouteImport.update({
   path: '/shipping',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const CatalogSlugRoute = CatalogSlugRouteImport.update({
   id: '/catalog/$slug',
@@ -110,6 +133,7 @@ const CatalogSlugRoute = CatalogSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/digital-printing': typeof DigitalPrintingRoute
   '/disclaimer': typeof DisclaimerRoute
@@ -122,12 +146,15 @@ export interface FileRoutesByFullPath {
   '/refund': typeof RefundRoute
   '/services': typeof ServicesRoute
   '/shipping': typeof ShippingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/catalog/$slug': typeof CatalogSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/digital-printing': typeof DigitalPrintingRoute
   '/disclaimer': typeof DisclaimerRoute
@@ -140,13 +167,17 @@ export interface FileRoutesByTo {
   '/refund': typeof RefundRoute
   '/services': typeof ServicesRoute
   '/shipping': typeof ShippingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/catalog/$slug': typeof CatalogSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/digital-printing': typeof DigitalPrintingRoute
   '/disclaimer': typeof DisclaimerRoute
@@ -159,7 +190,9 @@ export interface FileRoutesById {
   '/refund': typeof RefundRoute
   '/services': typeof ServicesRoute
   '/shipping': typeof ShippingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/catalog/$slug': typeof CatalogSlugRoute
 }
 export interface FileRouteTypes {
@@ -167,6 +200,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/auth'
     | '/contact'
     | '/digital-printing'
     | '/disclaimer'
@@ -179,12 +213,15 @@ export interface FileRouteTypes {
     | '/refund'
     | '/services'
     | '/shipping'
+    | '/sitemap.xml'
     | '/terms'
+    | '/admin'
     | '/catalog/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/auth'
     | '/contact'
     | '/digital-printing'
     | '/disclaimer'
@@ -197,12 +234,16 @@ export interface FileRouteTypes {
     | '/refund'
     | '/services'
     | '/shipping'
+    | '/sitemap.xml'
     | '/terms'
+    | '/admin'
     | '/catalog/$slug'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/about'
+    | '/auth'
     | '/contact'
     | '/digital-printing'
     | '/disclaimer'
@@ -215,13 +256,17 @@ export interface FileRouteTypes {
     | '/refund'
     | '/services'
     | '/shipping'
+    | '/sitemap.xml'
     | '/terms'
+    | '/_authenticated/admin'
     | '/catalog/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
+  AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
   DigitalPrintingRoute: typeof DigitalPrintingRoute
   DisclaimerRoute: typeof DisclaimerRoute
@@ -234,6 +279,7 @@ export interface RootRouteChildren {
   RefundRoute: typeof RefundRoute
   ServicesRoute: typeof ServicesRoute
   ShippingRoute: typeof ShippingRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   CatalogSlugRoute: typeof CatalogSlugRoute
 }
@@ -247,11 +293,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -338,12 +398,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShippingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/catalog/$slug': {
       id: '/catalog/$slug'
@@ -355,9 +429,22 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
+  AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
   DigitalPrintingRoute: DigitalPrintingRoute,
   DisclaimerRoute: DisclaimerRoute,
@@ -370,6 +457,7 @@ const rootRouteChildren: RootRouteChildren = {
   RefundRoute: RefundRoute,
   ServicesRoute: ServicesRoute,
   ShippingRoute: ShippingRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   CatalogSlugRoute: CatalogSlugRoute,
 }

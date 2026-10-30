@@ -43,19 +43,7 @@ export function LegalPage({
         <p className="mt-2 text-sm text-muted-foreground">
           Binani Enterprises, Surat, Gujarat, India · GST No. 24CPYPB8953C1ZL
         </p>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Phone:{" "}
-          <a href="tel:+918460360600" className="font-medium text-foreground hover:underline">
-            +91 8460360600
-          </a>{" "}
-          · Email:{" "}
-          <a
-            href="mailto:pravin@binanienterprises.in"
-            className="font-medium text-foreground hover:underline"
-          >
-            pravin@binanienterprises.in
-          </a>
-        </p>
+        <p className="mt-2 text-sm text-muted-foreground">Contact Praveen Binani: <a href="tel:+918460360600" className="underline">+91 8460360600</a>. Email: [EMAIL].</p>
       </div>
     </main>
   );

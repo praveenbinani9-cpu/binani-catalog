@@ -14,6 +14,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "../components/site-header";
 import { SiteFooter } from "../components/site-footer";
 import { Toaster } from "../components/ui/sonner";
+import { WhatsAppFloat } from "@/components/textile/whatsapp-float";
+import { supabase } from "@/integrations/supabase/client";
 
 
 function NotFoundComponent() {
@@ -81,17 +83,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Binani Enterprises — Apparel, Waste Paper & Payment Services" },
+      { title: "Binani Enterprises — Textile Manufacturing" },
       {
         name: "description",
         content:
-          "Binani Enterprises, Surat: manufacturer and supplier of ethnic apparel, OCC waste paper, kraft liner and digital payment services.",
+          "Fabrics, digital printing and make-to-order textile manufacturing from Surat.",
       },
       { name: "author", content: "Binani Enterprises" },
-      { property: "og:title", content: "Binani Enterprises — Product & Service Catalog" },
+      { property: "og:title", content: "Binani Enterprises — Textile Partner" },
       {
         property: "og:description",
-        content: "Ethnic apparel, recycled paper grades and digital payment solutions from Surat, Gujarat.",
+        content: "Your partner for fabrics, printing and garment manufacturing in Surat.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -106,7 +108,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap",
       },
     ],
   }),
@@ -132,6 +134,16 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+  useEffect(() => {
+    const { data } = supabase.auth.onAuthStateChange((event) => {
+      if (!["SIGNED_IN", "SIGNED_OUT", "USER_UPDATED"].includes(event)) return;
+      router.invalidate();
+      if (event !== "SIGNED_OUT") queryClient.invalidateQueries();
+      else queryClient.removeQueries({ queryKey: ["inquiries"] });
+    });
+    return () => data.subscription.unsubscribe();
+  }, [router, queryClient]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -143,6 +155,7 @@ function RootComponent() {
         </main>
         <SiteFooter />
         <Toaster />
+        <WhatsAppFloat />
 
       </div>
     </QueryClientProvider>
