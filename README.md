@@ -13,7 +13,7 @@ TanStack Start + React + TypeScript, Tailwind v4 and shadcn/ui. Routing stays on
 
 ## Inquiry storage
 The applied schema is in `drizzle/migrations/0000_textile_inquiries.sql`: inquiries, protected user_roles, RLS, explicit grants and private file read policies. The private `tech-packs` bucket was created through the Storage API with a 20 MB per-file limit. Creation is not embedded as unsupported storage.buckets SQL.
-The 3-step RFQ uses react-hook-form + Zod; the server validates again. PDFs, JPGs, PNGs, AI and CDR files are accepted at up to 20 MB each. Inquiry and uploads are saved before showing success. Uploads are private with short-lived staff download links.
+The 3-step RFQ uses react-hook-form + Zod; the server validates again. PDFs, JPGs, PNGs, AI and CDR files are accepted at up to 20 MB each (10 files / 100 MB aggregate safety limit). Inquiry and uploads are saved before showing success. Uploads are private with short-lived staff download links.
 
 ## Staff access
 `/auth` signs in with an authorised email/password account. `/admin` lists inquiries, manages New / Contacted / Quoted / Closed statuses, opens full details and attachments, and exports all paginated rows as safe CSV.
@@ -27,4 +27,4 @@ insert into public.user_roles(user_id,role) values ('<actual-authorised-user-uui
 Each content route has unique metadata. Organization and LocalBusiness JSON-LD includes only known locality information. `/sitemap.xml` uses the request origin. `/products` and legacy item URLs redirect to `/fabrics`; `/services` redirects to `/digital-printing`. Existing `/payment` remains available.
 
 ## Development
-`bun install`, `bun run dev`. Existing project build pipeline verifies compilation. Run validation tests with `bun test src/lib/rfq-schema.test.ts`.
+`bun install`, `bun run dev`. Existing project build pipeline verifies compilation. Run validation tests with `bun test src/lib/rfq-schema.test.js`.
