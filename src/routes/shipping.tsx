@@ -1,92 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { LegalPage } from "@/components/legal-page";
-
-const title = "Shipping & Delivery Policy — Binani Enterprises";
-const description =
-  "Dispatch timelines, freight terms, packing standards and delivery coverage for apparel and waste paper consignments from Binani Enterprises, Surat.";
-
-export const Route = createFileRoute("/shipping")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-    ],
-  }),
-  component: ShippingPage,
-});
-
-function ShippingPage() {
-  return (
-    <LegalPage
-      title="Shipping & Delivery Policy"
-      updated="24 August 2026"
-      intro="How we pack, dispatch and deliver consignments of ethnic apparel and recycled paper grades from Surat, Gujarat to buyers across India and export markets."
-      sections={[
-        {
-          heading: "1. Dispatch timelines",
-          body: (
-            <p>
-              Ready stock is normally dispatched within 3 to 7 working days of order confirmation.
-              Made-to-order apparel and bulk paper lots follow the lead time stated in the
-              quotation. Timelines start after receipt of the confirmed order and any agreed advance
-              payment.
-            </p>
-          ),
-        },
-        {
-          heading: "2. Coverage",
-          body: (
-            <p>
-              We supply all over India by road and rail transport, and handle export consignments
-              through container and freight-forwarding partners on terms agreed per order.
-            </p>
-          ),
-        },
-        {
-          heading: "3. Freight and risk",
-          body: (
-            <p>
-              Unless the quotation states otherwise, freight, insurance and unloading are to the
-              buyer's account and risk passes on handover to the transporter. Where we arrange
-              transport on your behalf, we do so as your agent and share the carrier's docket
-              details for tracking.
-            </p>
-          ),
-        },
-        {
-          heading: "4. Packing",
-          body: (
-            <p>
-              Apparel is packed in poly bags inside cartons; waste paper and kraft grades are
-              supplied in bales or reels as specified. Special packing, marking or labelling can be
-              arranged at additional cost if requested before dispatch.
-            </p>
-          ),
-        },
-        {
-          heading: "5. Receiving a consignment",
-          body: (
-            <p>
-              Please check the number of packages and their condition against the transporter's
-              document before signing. Note any shortage or visible damage on the delivery
-              challan and inform us within 48 hours with photographs, so we can pursue the claim
-              with the carrier.
-            </p>
-          ),
-        },
-        {
-          heading: "6. Delays",
-          body: (
-            <p>
-              We share revised timelines as soon as a delay is known. We are not responsible for
-              delays caused by transport strikes, weather, checkpoint or customs holds, or other
-              events outside our reasonable control.
-            </p>
-          ),
-        },
-      ]}
-    />
-  );
-}
+import { createFileRoute } from '@tanstack/react-router';
+import { LegalPage } from '@/components/legal-page';
+import { pageHead } from '@/lib/seo';
+export const Route=createFileRoute('/shipping')({head:()=>pageHead('Shipping & Delivery Policy','Packing, dispatch and delivery arrangements for textile orders.'),component:Policy});
+function Policy(){return <LegalPage title={'Shipping & Delivery Policy'} updated="30 October 2026" intro={'Packing, dispatch and delivery arrangements for textile orders.'} sections={[
+        { heading: 'Timelines by order', body: <p>Ready fabric and make-to-order goods have different dispatch requirements. Sampling approval, procurement, production, finishing and payment milestones influence the plan. Lead times and dispatch dates are confirmed in writing for each accepted order.</p> },
+        { heading: 'Destinations and freight', body: <p>Share the delivery destination and any exporter or buyer requirements before quotation. Freight, duties, insurance, unloading and responsibility for transport are agreed per order. No country coverage, carrier or fixed freight rate is promised without confirmation.</p> },
+        { heading: 'Packing and documentation', body: <p>Roll, garment, carton, labelling and documentation requirements should be included in the project brief. Special packing and buyer-specific markings are reviewed and priced where applicable.</p> },
+        { heading: 'Receiving goods', body: <p>Check the consignment against the dispatch documents on receipt. Record visible damage or shortages with the carrier and inform us promptly with photographs and the order reference. Claim requirements follow the agreed order terms.</p> },
+        { heading: 'Changes and delays', body: <p>Transport interruptions, weather, material availability and approval changes can affect delivery. We discuss revised timelines when known. Risk transfer, remedies and responsibility remain governed by the accepted contract and applicable law.</p> },
+]}/>;}
