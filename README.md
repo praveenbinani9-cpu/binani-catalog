@@ -3,8 +3,8 @@
 TanStack Start + React + TypeScript, Tailwind v4 and shadcn/ui. Routing stays on the existing TanStack stack rather than installing React Router.
 
 ## Content to confirm before publishing
-- `src/data/fabrics.ts`: email, street address, business hours, WhatsApp number (international digits without +), fabric compositions and founding year (existing business data says 2024).
-- Confirm +91 8460360600 as the current business phone. WhatsApp is deliberately inactive until its number is confirmed; chat buttons currently open Contact rather than an invented recipient.
+- `src/data/fabrics.ts`: email, street address, business hours, fabric compositions and founding year (existing business data says 2024).
+- WhatsApp is active at +918460360600. Both published capacity figures refer to digital printing, not fabric manufacturing.
 - Replace generated/representative images with approved actual fabric, printing and manufacturing photographs. Imports are in `src/data/fabrics.ts` and the content routes.
 - Confirm or replace the typographic B. logo mark and favicon.
 - Confirm MOQ, sampling/production lead times and policy terms. Policies are general drafts for owner/legal review, without invented cancellation/refund deadlines.
